@@ -1,5 +1,7 @@
 package com.rs.fer.boot.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,20 +10,19 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @Entity
-@Table(name="UserInfo")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Address {
-
+@Table(name = "UserInfo")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class Address implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue
-	private int id;
+	private int id; 
 	@Column
-	private String line_1;
+	private String lineOne;
 	@Column
-	private String line_2;
+	private String lineTwo;
 	@Column
 	private String street;
 	@Column
@@ -38,18 +39,6 @@ public class Address {
 	public Address() {
 	}
 
-	public Address(String line_1, String line_2, String street, String city, String state, int pincode, String country,
-			int userid) {
-		this.line_1 = line_1;
-		this.line_2 = line_2;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.pincode = pincode;
-		this.country = country;
-		this.userid = userid;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -58,20 +47,20 @@ public class Address {
 		this.id = id;
 	}
 
-	public String getLine_1() {
-		return line_1;
+	public String getLineOne() {
+		return lineOne;
 	}
 
-	public void setLine_1(String line_1) {
-		this.line_1 = line_1;
+	public void setLine_1(String lineOne) {
+		this.lineOne = lineOne;
 	}
 
-	public String getLine_2() {
-		return line_2;
+	public String getlineTwo() {
+		return lineTwo;
 	}
 
-	public void setLine_2(String line_2) {
-		this.line_2 = line_2;
+	public void setLine_2(String lineTwo) {
+		this.lineTwo = lineTwo;
 	}
 
 	public String getStreet() {
@@ -122,10 +111,4 @@ public class Address {
 		this.userid = userid;
 	}
 
-	 
-		public String toString() {
-			return "Address [line_1=" + line_1 + ", id=" + id + ", line_2=" + line_2 + " ,street="
-					+ street + " ,city=" + city + " ,state=" + state + " ,pincode=" + pincode
-					+ " ,country=" + country + " ,userid=" + userid +"]";
-}
 }

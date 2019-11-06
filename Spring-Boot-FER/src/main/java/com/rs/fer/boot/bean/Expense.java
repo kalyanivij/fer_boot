@@ -1,5 +1,7 @@
 package com.rs.fer.boot.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +10,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @Entity
-@Table(name="UserInfo")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Expense {
+@Table(name = "UserInfo")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class Expense implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(nullable = false)
@@ -32,17 +34,6 @@ public class Expense {
 	private String by_whom;
 	@Column
 	private int userid;
-
-	public Expense() {
-	}
-	public Expense(String expense_type, String date, float price, int no_of_items, float total, int userid ) {
-		this.expense_type = expense_type;
-		this.date = date;
-		this.price = price;
-		this.no_of_items = no_of_items;
-		this.total = total;
-		this.userid = userid;
-	}
 
 	public int getId() {
 		return this.id;
@@ -106,13 +97,6 @@ public class Expense {
 
 	public void setUserid(int userid) {
 		this.userid = userid;
-	}
-
-	@Override
-	public String toString() {
-		return "Expense [id=" + id + ", expense_type=" + expense_type + ", date=" + date + ", price=" + price
-				+ ", no_of_items=" + no_of_items + ", total=" + total + ", by_whom=" + by_whom + ", userid=" + userid
-				+ "]";
 	}
 
 }
